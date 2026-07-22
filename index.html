@@ -1,278 +1,804 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jeffrey Alan Young — AI researcher, data scientist, educator, and builder of practical intelligent systems.">
-  <meta name="theme-color" content="#071a18">
-  <title>Jeffrey Alan Young | AI Researcher & Data Scientist</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Jeffrey A. Young | Portfolio</title>
+  <meta
+    name="description"
+    content="The professional portfolio of Jeffrey A. Young — Data Scientist, AI Engineer, Machine Learning Engineer, researcher, and creator."
+  />
+  <meta name="theme-color" content="#2f1a12" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --brown-950: #1d0f0a;
+      --brown-900: #2d1810;
+      --brown-800: #422418;
+      --brown-700: #5a3121;
+      --terracotta: #c8643f;
+      --terracotta-light: #e48761;
+      --cream: #fff4e8;
+      --sand: #e7c7ae;
+      --muted: #bea18e;
+      --panel: rgba(68, 36, 24, 0.78);
+      --panel-hover: rgba(84, 44, 29, 0.94);
+      --border: rgba(228, 135, 97, 0.22);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at top left, rgba(200, 100, 63, 0.2), transparent 30%),
+        radial-gradient(circle at 85% 18%, rgba(228, 135, 97, 0.13), transparent 28%),
+        linear-gradient(145deg, var(--brown-950), var(--brown-900) 55%, #25130d);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.11;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      background: rgba(40, 21, 14, 0.74);
+      backdrop-filter: blur(16px);
+      border-radius: 999px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 18px;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--terracotta-light), var(--terracotta));
+      color: var(--brown-950);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,0.12);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong,
+    .brand-copy span {
+      display: block;
+    }
+
+    .brand-copy strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-copy span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-link {
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--brown-950);
+      background: var(--cream);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background: white;
+    }
+
+    .hero {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 48px;
+      padding: 92px 22px 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--sand);
+      background: rgba(200, 100, 63, 0.09);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--terracotta-light);
+      box-shadow: 0 0 18px var(--terracotta);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(3.4rem, 8vw, 7.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.065em;
+    }
+
+    .accent {
+      color: var(--terracotta-light);
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 26px 0 0;
+      color: var(--sand);
+      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: var(--brown-950);
+      background: linear-gradient(135deg, var(--terracotta-light), var(--terracotta));
+      box-shadow: 0 14px 30px rgba(200, 100, 63, 0.23);
+    }
+
+    .btn-secondary {
+      color: var(--cream);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 420px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(160deg, rgba(228, 135, 97, 0.16), rgba(255,255,255,0.025)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .hero-card::before {
+      width: 210px;
+      height: 210px;
+      top: -70px;
+      right: -60px;
+      background: rgba(228, 135, 97, 0.18);
+    }
+
+    .hero-card::after {
+      width: 150px;
+      height: 150px;
+      bottom: -60px;
+      left: -40px;
+      background: rgba(200, 100, 63, 0.13);
+    }
+
+    .monogram {
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 34px;
+      border-radius: 50%;
+      background: var(--brown-950);
+      border: 5px solid var(--terracotta);
+      color: var(--cream);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 3.3rem;
+      font-weight: 700;
+      letter-spacing: -0.08em;
+      box-shadow:
+        0 0 0 10px rgba(200, 100, 63, 0.09),
+        0 24px 50px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card h2 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .role-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .role {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--sand);
+      font-size: 0.97rem;
+    }
+
+    .role::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 3px;
+      background: var(--terracotta-light);
+      transform: rotate(45deg);
+      flex: 0 0 auto;
+    }
+
+    .section {
+      padding: 32px 0 12px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 26px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-header p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.03), rgba(200,100,63,0.07)),
+        var(--panel);
+      box-shadow: 0 16px 38px rgba(0,0,0,0.16);
+      transition:
+        transform 0.24s ease,
+        border-color 0.24s ease,
+        background 0.24s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(228, 135, 97, 0.52);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.05), rgba(200,100,63,0.14)),
+        var(--panel-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .project-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      color: var(--brown-950);
+      background: linear-gradient(145deg, var(--terracotta-light), var(--terracotta));
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .arrow {
+      color: var(--terracotta-light);
+      font-size: 1.55rem;
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover .arrow {
+      transform: translate(4px, -4px);
+    }
+
+    .project-card h3 {
+      margin: 26px 0 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .project-url {
+      margin-top: 20px;
+      color: var(--sand);
+      font-size: 0.8rem;
+      word-break: break-all;
+      opacity: 0.76;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 30px 0 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--sand);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--terracotta-light);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 70px;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-shell {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .topbar {
+        top: 10px;
+        border-radius: 18px;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 9px 12px;
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        padding: 62px 8px 52px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 18vw, 5.2rem);
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .link-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Jeffrey Young home">
-        <span class="brand-mark">JY</span>
-        <span>Jeffrey Alan Young</span>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-mark">JAY</span>
+        <span class="brand-copy">
+          <strong>Jeffrey A. Young</strong>
+          <span>Data Science • AI • Research • Innovation</span>
+        </span>
       </a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#documents">Documents</a>
-        <a href="#connect">Connect</a>
-      </nav>
-    </div>
-  </header>
 
-  <main id="main">
-    <section id="goto_top" class="hero section">
-      <div class="hero-orb orb-one"></div>
-      <div class="hero-orb orb-two"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">AI · Data Science · Security · Education</p>
-          <h1>Building intelligent systems that are useful, trustworthy, and grounded in real problems.</h1>
-          <p class="hero-lede">I’m Jeffrey Alan Young, a Ph.D. candidate, data scientist, security researcher, educator, and product builder working across applied AI, machine learning, agentic systems, IoT security, predictive analytics, and decision support.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">Explore my work</a>
-            <a class="button secondary" href="documents/Jeffrey_Young_Resume.pdf" download>Download resume</a>
-          </div>
-          <div class="hero-meta" aria-label="Highlights">
-            <span>USENIX Security</span>
-            <span>ACM CCS</span>
-            <span>Production AI/ML</span>
-            <span>University Teaching</span>
-          </div>
-        </div>
+      <a class="nav-link" href="#portfolio">Explore Portfolio</a>
+    </header>
 
-        <div class="portrait-card reveal">
-          <div class="portrait-frame">
-            <img src="assets/headshot.jpeg" alt="Professional headshot of Jeffrey Alan Young" width="900" height="900">
-          </div>
-          <div class="portrait-caption">
-            <div>
-              <strong>Jeffrey Alan Young</strong>
-              <span>Ph.D. Candidate in Computer Science</span>
-            </div>
-            <span class="status"><i></i> Open to collaboration</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section section-light">
-      <div class="container about-grid">
-        <div class="section-heading reveal">
-          <p class="eyebrow">About</p>
-          <h2>Research depth. Industry perspective. A builder’s mindset.</h2>
-        </div>
-        <div class="about-copy reveal">
-          <p>I combine academic research with hands-on product development. My work focuses on trustworthy artificial intelligence, machine-learning security, voice-assistant and IoT ecosystems, predictive maintenance, and analytics for complex cyber-physical environments.</p>
-          <p>I have designed production data and ML solutions, taught systems administration and security, mentored student researchers, and published at leading security venues. Outside the lab, I build AI applications that make advanced capabilities more accessible to educators, organizations, and independent creators.</p>
-          <div class="expertise-grid">
-            <article><span>01</span><h3>Trustworthy AI</h3><p>AI security, policy compliance, responsible deployment, and robust intelligent systems.</p></article>
-            <article><span>02</span><h3>Applied ML</h3><p>Predictive analytics, deep learning, NLP, time-series modeling, and decision support.</p></article>
-            <article><span>03</span><h3>AI Products</h3><p>Agentic applications, business automation, educational tools, and interactive assistants.</p></article>
-            <article><span>04</span><h3>Teaching</h3><p>Project-centered instruction in AI, data science, cybersecurity, and systems administration.</p></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-heading split reveal">
-          <div>
-            <p class="eyebrow">Selected Projects</p>
-            <h2>AI applications built for learning, work, and better decisions.</h2>
-          </div>
-          <div class="filters" role="group" aria-label="Project filters">
-            <button class="filter active" data-filter="all">All</button>
-            <button class="filter" data-filter="education">Education</button>
-            <button class="filter" data-filter="business">Business</button>
-            <button class="filter" data-filter="agents">Agents</button>
-            <button class="filter" data-filter="data">Data</button>
-          </div>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card reveal" data-category="education agents">
-            <div class="project-top"><span class="project-index">01</span><span class="tag">Education</span></div>
-            <h3>AI Academy</h3>
-            <p>An approachable learning hub that breaks down artificial intelligence concepts into clear, practical lessons.</p>
-            <a href="https://ai-edu-hub.replit.app/" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="agents business">
-            <div class="project-top"><span class="project-index">02</span><span class="tag">Assistant</span></div>
-            <h3>DSG Website Assistant</h3>
-            <p>A conversational website assistant designed to answer questions and help visitors navigate consulting services.</p>
-            <a href="https://website-assistant-jaydataiot.replit.app/" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="business data">
-            <div class="project-top"><span class="project-index">03</span><span class="tag">Assessment</span></div>
-            <h3>DSG Gameplan</h3>
-            <p>An interactive customer assessment that turns organizational needs into a structured analytics and AI roadmap.</p>
-            <a href="https://dsg-gameplan.replit.app/" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="business agents">
-            <div class="project-top"><span class="project-index">04</span><span class="tag">Automation</span></div>
-            <h3>Smart Inquiry Mail</h3>
-            <p>A streamlined contact and inquiry experience designed to improve lead capture and intelligent follow-up workflows.</p>
-            <a href="https://smart-inquiry-mail.replit.app/" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="agents business">
-            <div class="project-top"><span class="project-index">05</span><span class="tag">Agentic AI</span></div>
-            <h3>AI Web Companion</h3>
-            <p>An intelligent browsing companion that helps users understand, organize, and act on information from the web.</p>
-            <a href="https://ai-web-companion-jaydataiot.replit.app/" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal featured" data-category="agents education">
-            <div class="project-top"><span class="project-index">06</span><span class="tag">Generative AI</span></div>
-            <h3>Cognition Curator</h3>
-            <p>An agentic content-generation system for researching, shaping, and producing thoughtful technical articles.</p>
-            <a href="https://cognition-curator--jaydataiot.replit.app/" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="business agents">
-            <div class="project-top"><span class="project-index">07</span><span class="tag">Marketing</span></div>
-            <h3>Campaign Builder Pro</h3>
-            <p>An AI-assisted workspace for developing structured advertising campaigns, messaging, and creative direction.</p>
-            <a href="https://ad-campaigner-jaydataiot.replit.app" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="business data agents">
-            <div class="project-top"><span class="project-index">08</span><span class="tag">Optimization</span></div>
-            <h3>Business Optimize AI</h3>
-            <p>A decision-support application for identifying operational opportunities and translating data into business action.</p>
-            <a href="https://biz-optimize-ai.replit.app" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-
-          <article class="project-card reveal" data-category="data">
-            <div class="project-top"><span class="project-index">09</span><span class="tag">Analytics</span></div>
-            <h3>Bay Trends</h3>
-            <p>An exploratory analytics experience for surfacing trends, patterns, and useful signals from regional data.</p>
-            <a href="https://bay-trends.replit.app" target="_blank" rel="noopener">Launch project <span>↗</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="research" class="section section-dark">
-      <div class="container research-grid">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Research & Publications</p>
-          <h2>Security, machine learning, IoT, and data-driven systems.</h2>
-          <p class="heading-note">My publication record spans voice-assistant security, privacy-preserving authentication, predictive modeling, financial analytics, data mining, and IoT device profiling.</p>
-          <div class="profile-links">
-            <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AO4B3jt6uLNSh97nTTvG1gGSzQtFTlJmXan3G72TCnGzR0cVwLFM_oNKmsbh50_MpPMNhVTounmlmN1o-VeF7A&user=r0r-MVAAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>
-            <a href="https://www.researchgate.net/profile/Jeffrey-Young-6?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate ↗</a>
-          </div>
-        </div>
-
-        <div class="publication-list reveal">
-          <article class="publication">
-            <div><span>USENIX Security · 2022</span><h3>SkillDetective: Automated Policy-Violation Detection of Voice Assistant Applications in the Wild</h3></div>
-            <p>Natural-language processing and machine-learning methods for detecting risky behavior at ecosystem scale.</p>
-          </article>
-          <article class="publication">
-            <div><span>ACM CCS · 2020</span><h3>Dangerous Skills Got Certified: Measuring the Trustworthiness of Skill Certification</h3></div>
-            <p>An empirical evaluation of certification weaknesses in voice personal assistant platforms.</p>
-          </article>
-          <article class="publication">
-            <div><span>Big Data, Data Mining & Data Science · 2024</span><h3>RNN Models for Evaluating Financial Indices During COVID-19</h3></div>
-            <p>Time-series modeling of volatility and demand-supply shifts during a period of systemic disruption.</p>
-          </article>
-          <article class="publication">
-            <div><span>IEEE HONET · 2020</span><h3>A Methodological Framework for Validating ZKP Authentication Processes</h3></div>
-            <p>A structured approach for evaluating privacy-preserving authentication mechanisms.</p>
-          </article>
-          <article class="publication">
-            <div><span>IEEE RFID · 2019</span><h3>Configurable Anonymous Authentication Schemes for the Internet of Things</h3></div>
-            <p>Flexible authentication methods designed for privacy-sensitive IoT environments.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="documents" class="section section-light">
-      <div class="container">
-        <div class="section-heading split reveal">
-          <div>
-            <p class="eyebrow">Documents</p>
-            <h2>Professional and academic materials.</h2>
-          </div>
-          <p class="heading-note">Download current materials for hiring, academic review, speaking engagements, or collaboration.</p>
-        </div>
-        <div class="document-grid">
-          <a class="document-card reveal" href="documents/Jeffrey_Young_Resume.pdf" download>
-            <span class="doc-type">PDF</span><div><h3>Resume</h3><p>Industry-focused experience, technical skills, projects, and selected publications.</p></div><span class="download">↓</span>
-          </a>
-          <a class="document-card reveal" href="documents/Jeffrey_Young_CV.pdf" download>
-            <span class="doc-type">PDF</span><div><h3>Curriculum Vitae</h3><p>Academic appointments, teaching, research, service, honors, and publications.</p></div><span class="download">↓</span>
-          </a>
-          <a class="document-card reveal" href="documents/Jeffrey_Young_Research_Statement.pdf" download>
-            <span class="doc-type">PDF</span><div><h3>Research Statement</h3><p>Research vision and five-year agenda for trustworthy AI and intelligent systems.</p></div><span class="download">↓</span>
-          </a>
-          <a class="document-card reveal" href="documents/Jeffrey_Young_Teaching_Statement.pdf" download>
-            <span class="doc-type">PDF</span><div><h3>Teaching Statement</h3><p>Teaching philosophy, instructional methods, mentoring, and student-success goals.</p></div><span class="download">↓</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section ecosystem">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Elsewhere</p>
-          <h2>Research writing and consulting.</h2>
-        </div>
-        <div class="ecosystem-grid">
-          <a class="ecosystem-card reveal" href="https://www.eigenbytes.blog" target="_blank" rel="noopener">
-            <span>Research & Learning</span><h3>Eigenbytes</h3><p>Articles, tutorials, tools, and commentary exploring data science, AI, machine learning, and security.</p><b>Visit site ↗</b>
-          </a>
-          <a class="ecosystem-card reveal" href="https://www.decisionsciencegroup.com/" target="_blank" rel="noopener">
-            <span>Consulting</span><h3>Decision Science Group</h3><p>Practical analytics, intelligent automation, data strategy, and AI-enabled solutions for organizations.</p><b>Visit site ↗</b>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="connect" class="section connect-section">
-      <div class="container connect-card reveal">
+    <main id="top">
+      <section class="hero">
         <div>
-          <p class="eyebrow">Connect</p>
-          <h2>Let’s build something useful.</h2>
-          <p>I’m interested in research collaboration, applied AI projects, university teaching, consulting, and conversations about trustworthy intelligent systems.</p>
+          <div class="eyebrow">Professional Portfolio</div>
+
+          <h1>
+            Data. AI.<br />
+            <span class="accent">Real-World Impact.</span>
+          </h1>
+
+          <p>
+            Welcome to the professional portfolio of Jeffrey A. Young — data scientist,
+            AI engineer, machine learning engineer, researcher, educator, and technology
+            creator. Explore my work, publications, code, professional profiles, and
+            active development platforms.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portfolio">View All Links</a>
+            <a
+              class="btn btn-secondary"
+              href="https://www.ja-young.com/home.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Main Website
+            </a>
+          </div>
         </div>
-        <div class="connect-actions">
-          <a class="button primary" href="mailto:jay.data.iot@gmail.com">Email Jeffrey</a>
-          <a class="button secondary light" href="https://www.linkedin.com/in/saiot/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="button secondary light" href="https://github.com/jaydataiot" target="_blank" rel="noopener">GitHub ↗</a>
+
+        <aside class="hero-card" aria-label="Professional roles">
+          <div class="monogram">JAY</div>
+          <h2>Jeffrey A. Young</h2>
+
+          <div class="role-list">
+            <div class="role">Data Scientist</div>
+            <div class="role">Artificial Intelligence Engineer</div>
+            <div class="role">Machine Learning Engineer</div>
+            <div class="role">AI Security Researcher</div>
+            <div class="role">Founder and Technology Creator</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="portfolio">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Explore My Work</div>
+            <h2>Portfolio Links</h2>
+          </div>
+
+          <p>
+            These destinations provide access to my professional background, research,
+            publications, software repositories, AI projects, and development work.
+          </p>
         </div>
+
+        <div class="link-grid">
+          <a
+            class="project-card"
+            href="https://www.ja-young.com/home.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">JY</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>Main Professional Website</h3>
+              <p>
+                Learn more about my professional experience, accomplishments, expertise,
+                research, and broader body of work.
+              </p>
+            </div>
+            <div class="project-url">ja-young.com/home.html</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://eigenbytes.blog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">EB</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>EigenBytes</h3>
+              <p>
+                An AI, data science, machine learning, engineering, research, and
+                educational platform featuring articles, tutorials, and intelligent tools.
+              </p>
+            </div>
+            <div class="project-url">eigenbytes.blog</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://www.linkedin.com/in/saiot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">in</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>LinkedIn</h3>
+              <p>
+                Connect with me professionally and explore updates related to AI,
+                data science, machine learning, research, consulting, and innovation.
+              </p>
+            </div>
+            <div class="project-url">linkedin.com/in/saiot</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://scholar.google.com/citations?user=r0r-MVAAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">GS</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>Google Scholar</h3>
+              <p>
+                Browse my peer-reviewed publications, citation history, academic
+                contributions, and research impact.
+              </p>
+            </div>
+            <div class="project-url">scholar.google.com</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://www.researchgate.net/profile/Jeffrey-Young-6?ev=hdr_xprf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">RG</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>ResearchGate</h3>
+              <p>
+                Access my research profile, academic publications, collaborations,
+                project activity, and scholarly network.
+              </p>
+            </div>
+            <div class="project-url">researchgate.net/profile/Jeffrey-Young-6</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://github.com/jaydataiot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">GH</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>GitHub</h3>
+              <p>
+                Explore software repositories, web projects, AI experiments, code,
+                technical prototypes, and open development work.
+              </p>
+            </div>
+            <div class="project-url">github.com/jaydataiot</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://app.inspo.expert/id/jeffreyyoung"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">IE</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>Inspo Expert Profile</h3>
+              <p>
+                View my expert profile, professional positioning, knowledge areas,
+                and public-facing portfolio presence.
+              </p>
+            </div>
+            <div class="project-url">app.inspo.expert/id/jeffreyyoung</div>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://replit.com/@jaydataiot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="card-top">
+                <div class="project-icon">R</div>
+                <div class="arrow">↗</div>
+              </div>
+              <h3>Replit Projects</h3>
+              <p>
+                Discover deployed AI applications, interactive tools, prototypes,
+                web platforms, and active development projects.
+              </p>
+            </div>
+            <div class="project-url">replit.com/@jaydataiot</div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        © <span id="year"></span> Jeffrey A. Young. All rights reserved.
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>© <span id="year"></span> Jeffrey Alan Young</p>
-      <p>AI researcher · Data scientist · Educator · Builder</p>
-      <a href="#goto_top">Back to top ↑</a>
-    </div>
-  </footer>
+      <div class="footer-links">
+        <a href="https://www.ja-young.com/home.html" target="_blank" rel="noopener noreferrer">Main Website</a>
+        <a href="https://eigenbytes.blog" target="_blank" rel="noopener noreferrer">EigenBytes</a>
+        <a href="https://www.linkedin.com/in/saiot" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -478,6 +478,25 @@
       color: var(--terracotta-light);
     }
 
+    .twin-widget { position: fixed; right: 24px; bottom: 24px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+    .twin-launcher { width: 72px; height: 72px; padding: 4px; border: 1px solid rgba(255,244,232,.52); border-radius: 50%; background: linear-gradient(145deg,var(--terracotta-light),var(--terracotta)); box-shadow: 0 18px 44px rgba(0,0,0,.38); cursor: pointer; transition: transform .22s ease, box-shadow .22s ease; position: relative; }
+    .twin-launcher:hover { transform: translateY(-3px) scale(1.025); box-shadow: 0 22px 52px rgba(0,0,0,.44); }
+    .twin-launcher:focus-visible { outline: 3px solid var(--cream); outline-offset: 4px; }
+    .twin-launcher img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+    .twin-launcher::after { content: ""; position: absolute; right: 2px; bottom: 3px; width: 14px; height: 14px; border: 3px solid var(--brown-900); border-radius: 50%; background: #55c98e; box-shadow: 0 0 0 4px rgba(85,201,142,.17); }
+    .twin-launcher-label { position: absolute; right: 84px; top: 50%; transform: translateY(-50%); width: max-content; max-width: 220px; padding: 9px 13px; border: 1px solid var(--border); border-radius: 12px; color: var(--cream); background: rgba(45,24,16,.94); box-shadow: 0 12px 32px rgba(0,0,0,.26); font-size: .8rem; font-weight: 700; pointer-events: none; }
+    .twin-panel { width: min(430px,calc(100vw - 32px)); height: min(690px,calc(100vh - 122px)); min-width: 340px; min-height: 460px; max-width: calc(100vw - 32px); max-height: calc(100vh - 32px); display: grid; grid-template-rows: auto 1fr; overflow: hidden; resize: both; border: 1px solid rgba(228,135,97,.34); border-radius: 26px; background: #fff; box-shadow: 0 28px 90px rgba(0,0,0,.46); transform-origin: right bottom; transition: opacity .24s ease, transform .24s ease, visibility .24s; }
+    .twin-panel[hidden] { display: none; }
+    .twin-panel.is-opening { animation: twin-deploy .3s cubic-bezier(.2,.8,.2,1); }
+    .twin-header { display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 12px; padding: 14px; color: var(--cream); background: linear-gradient(135deg,var(--brown-900),var(--brown-800)); border-bottom: 1px solid rgba(255,255,255,.12); }
+    .twin-avatar { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(228,135,97,.75); box-shadow: 0 0 0 4px rgba(228,135,97,.1); }
+    .twin-heading strong,.twin-heading span { display: block; }.twin-heading strong { font-family: "Space Grotesk",sans-serif; font-size: .98rem; }.twin-heading span { margin-top: 2px; color: var(--sand); font-size: .76rem; line-height: 1.35; }
+    .twin-tools { display: flex; gap: 5px; }.twin-tool { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; color: var(--cream); background: rgba(255,255,255,.06); font-size: 1.15rem; cursor: pointer; }
+    .twin-tool:hover { background: rgba(255,255,255,.13); }.twin-tool:focus-visible { outline: 3px solid var(--terracotta-light); outline-offset: 2px; }
+    .twin-frame-wrap { position: relative; min-height: 0; background: #f7f4f1; }.twin-frame { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
+    .twin-loading { position: absolute; inset: 0; display: grid; place-items: center; padding: 32px; color: var(--brown-800); text-align: center; font-weight: 700; background: #f7f4f1; }.twin-loading[hidden] { display:none; }
+    @keyframes twin-deploy { from { opacity:0; transform: translateY(18px) scale(.94); } to { opacity:1; transform:none; } }
+
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
@@ -533,6 +552,11 @@
       footer {
         flex-direction: column;
       }
+
+      .twin-widget { right: 12px; bottom: 12px; }
+      .twin-launcher { width: 64px; height: 64px; }
+      .twin-launcher-label { display: none; }
+      .twin-panel { width: calc(100vw - 24px); min-width: 0; height: min(720px,calc(100dvh - 96px)); max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); resize: vertical; border-radius: 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -544,6 +568,7 @@
       *::before,
       *::after {
         transition: none !important;
+        animation: none !important;
       }
     }
   </style>
@@ -817,8 +842,65 @@
     </footer>
   </div>
 
+  <aside class="twin-widget" aria-label="Jeffrey Young digital twin">
+    <section class="twin-panel" id="twin-panel" aria-label="Ask Jeffrey's digital twin" hidden>
+      <div class="twin-header">
+        <img class="twin-avatar" src="assets/jeffrey-digital-twin-avatar.jpg" alt="Illustrated avatar of Jeffrey Young">
+        <div class="twin-heading"><strong>Jeffrey's Digital Twin</strong><span>Ask questions about my work, research, experience, or interests.</span></div>
+        <div class="twin-tools" aria-label="Digital twin window controls"><button class="twin-tool" id="twin-shrink" type="button" aria-label="Make digital twin smaller">−</button><button class="twin-tool" id="twin-grow" type="button" aria-label="Make digital twin larger">+</button><button class="twin-tool" id="twin-close" type="button" aria-label="Collapse digital twin">×</button></div>
+      </div>
+      <div class="twin-frame-wrap">
+        <div class="twin-loading" id="twin-loading">Connecting you with Jeffrey's digital twin…</div>
+        <iframe class="twin-frame" id="twin-frame" title="Jeffrey Young digital twin conversation" data-src="https://digital-me-representation.replit.app" allow="clipboard-read; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+    <button class="twin-launcher" id="twin-launcher" type="button" aria-expanded="false" aria-controls="twin-panel">
+      <img src="assets/jeffrey-digital-twin-avatar.jpg" alt="">
+      <span class="twin-launcher-label">Ask my digital twin</span>
+    </button>
+  </aside>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const twinLauncher = document.getElementById("twin-launcher");
+    const twinPanel = document.getElementById("twin-panel");
+    const twinClose = document.getElementById("twin-close");
+    const twinFrame = document.getElementById("twin-frame");
+    const twinLoading = document.getElementById("twin-loading");
+    const twinGrow = document.getElementById("twin-grow");
+    const twinShrink = document.getElementById("twin-shrink");
+
+    function openTwin() {
+      twinPanel.hidden = false;
+      twinPanel.classList.remove("is-opening");
+      void twinPanel.offsetWidth;
+      twinPanel.classList.add("is-opening");
+      twinLauncher.setAttribute("aria-expanded", "true");
+      if (!twinFrame.src) twinFrame.src = twinFrame.dataset.src;
+      twinClose.focus();
+    }
+
+    function closeTwin() {
+      twinPanel.hidden = true;
+      twinPanel.classList.remove("is-opening");
+      twinLauncher.setAttribute("aria-expanded", "false");
+      twinLauncher.focus();
+    }
+
+    twinLauncher.addEventListener("click", () => twinPanel.hidden ? openTwin() : closeTwin());
+    twinClose.addEventListener("click", closeTwin);
+    function resizeTwin(direction) {
+      const rect = twinPanel.getBoundingClientRect();
+      const narrow = window.matchMedia("(max-width: 680px)").matches;
+      const nextWidth = narrow ? rect.width : Math.min(window.innerWidth - 32, Math.max(340, rect.width + direction * 100));
+      const nextHeight = Math.min(window.innerHeight - 32, Math.max(460, rect.height + direction * 100));
+      twinPanel.style.width = `${nextWidth}px`;
+      twinPanel.style.height = `${nextHeight}px`;
+    }
+    twinGrow.addEventListener("click", () => resizeTwin(1));
+    twinShrink.addEventListener("click", () => resizeTwin(-1));
+    twinFrame.addEventListener("load", () => { twinLoading.hidden = true; });
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && !twinPanel.hidden) closeTwin(); });
   </script>
 </body>
 </html>
